@@ -1,0 +1,173 @@
+/* Estilos generales */
+.harina-ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4caf70;
+  display: flex;
+}
+
+.harina-p {
+  font-size: x-large;
+}
+
+.harina-li {
+  margin: auto;
+  font-size: larger;
+}
+
+.harina-h1 {
+  justify-content: left;
+  font-size: large;
+}
+
+.harina {
+  display: auto;
+  flex-wrap: wrap;
+}
+
+.harina-imagen img {
+  width: 100%; /* Hace que la imagen sea responsiva */
+  max-width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  right: 65%;
+}
+
+.harina-datos {
+  position: fixed;
+  top: 500px;
+  color: black;
+  width: 100%; /* Hace que el ancho sea responsivo */
+  max-width: 600px;
+}
+
+.harina-imagen:hover .harina-datos {
+  opacity: 1;
+}
+
+.harina-info {
+  position: absolute;
+  top: 150px;
+  right: 45px;
+  width: 100%; /* Hace que el ancho sea responsivo */
+  max-width: 400px;
+}
+
+.custom-datepicker {
+  width: 100%; /* Hace que el ancho sea responsivo */
+  max-width: 150px;
+  height: 25px;
+  padding: 15px;
+  font-size: 25px;
+}
+
+.cantidad-container {
+  display: flex;
+  align-items: center;
+}
+
+.cantidad-container button,
+.cantidad-container input {
+  flex: 1;
+  font-size: 1.5em;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(202, 192, 192);
+}
+
+.cantidad-container input {
+  text-align: center;
+}
+
+.cantidad-container button {
+  background-color: rgb(100, 98, 98);
+}
+
+.custom-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 26px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10%;
+}
+
+.harina-btn:hover {
+  background-color: #45a049;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #dbdbdb;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  text-align: center;
+}
+
+.close-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.close-btn:hover {
+  background-color: #45a049;
+}
+.input-containerI {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-icon {
+  margin-left: 10px; 
+}
+
+@media only screen and (max-width: 768px) {
+  .harina-datos {
+    position: static; 
+    width: 100%;
+    max-width: 600px;
+    margin: auto; 
+  }
+
+  .harina-info {
+    position: static; 
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 400px;
+    margin: auto; 
+  }
+
+  .harina-ul {
+    flex-direction: column; 
+    align-items: center; 
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+}
