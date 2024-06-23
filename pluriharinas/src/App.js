@@ -14,11 +14,15 @@ import Contacto from "./components/Contacto";
 import MetodoPago from "./components/MetodoPago";
 import EmitirFactura from "./components/EmitirFactura";
 import CarritoCompra from "./components/CarritoCompra";
+import MenuExterno from "./components/menuExterno";
+import Registro from "./components/registro";
+import InicioSesion from "./components/InicioSesion";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+      <Route path="/" element={<MenuExterno />} />
         <Route path="/harina-malanga" element={<HarinaMalanga />} />
         <Route path="/harina-trigo" element={<HarinaTrigo />} />
         <Route path="/harina-curcuma" element={<HarinaCurcuma />} />
@@ -31,7 +35,8 @@ const App = () => {
         <Route path="/EmitirFactura" element={<EmitirFactura />} />
         <Route path="/Metodo-Pago" element={<MetodoPago />} />
         <Route path="/CarritoCompra" element={<CarritoCompra />} />
-        <Route path="/" element={<ListarProductos />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/InicioSesion" element={<InicioSesion />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,55 @@
+/* Estilos generales para la lista del menú */
+.menu-externo-container ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4caf70;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-externo-container li {
+  float: left;
+  margin: auto;
+}
+
+.menu-externo-link, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu-externo-link:hover, .dropdown:hover .dropbtn {
+  background-color: #198b43;
+}
+
+.menu-externo-container .nuestra-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px; /* Ajusta el margen superior según prefieras */
+}
+
+.menu-externo-container .imagen-container {
+  margin: 15px; /* Ajusta el margen entre las imágenes */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centra el contenido dentro del contenedor */
+}
+
+.menu-externo-container img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-externo-container img:hover {
+  transform: scale(1.1);
+}

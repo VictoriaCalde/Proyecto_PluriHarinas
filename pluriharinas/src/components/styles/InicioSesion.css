@@ -1,0 +1,86 @@
+.ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    display: flex;
+}
+div.inicio-sesion-page {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+  
+  .barra-inicio-sesion {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+    background-color: white;
+  }
+  .barra-inicio-sesion h1{
+  
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        unicode-bidi: isolate;
+    }
+  
+  
+  div.inicio-sesion-container {
+    margin-top: 10%;
+
+  }
+  
+  form.inicio-sesion-form {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inicio-sesion-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .inicio-sesion-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .inicio-sesion-form button {
+    background-color: #4caf70;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0%;
+  }
+  
+  .inicio-sesion-form button:hover {
+    background-color: #198b43;
+  }
+  
+  a.derechoslink, a.privacidadlink {
+    color: blue; /* Color del texto azul */
+    text-decoration: underline; /* Subrayado */
+  }
+  

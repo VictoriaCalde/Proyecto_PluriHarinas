@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./ListarProductos.css";
+import "../components/styles/ListarProductos.css";
+import malanga from "../img/malanga.jpg";
+import maiz from "../img/Harina-de-maiz.jpg";
+import trigo from "../img/trigo.jpg";
+import curcuma from "../img/como_usar_la_curcuma_en_remedios_caseros_22450_orig.jpg";
+import platano from "../img/HarinaDePlatano1.png";
+import yuca from "../img/yuca-flour-tapioca-cativia-CG11707.jpg";
 
 const Producto = ({ to, imagenSrc, nombre, peso, precio, descripcion }) => {
   return (
@@ -23,7 +29,7 @@ const ListarProductos = () => {
   const productos = [
     {
       to: "/harina-malanga",
-      imagenSrc: "img/malanga.jpg",
+      imagenSrc: malanga,
       nombre: "Harina de Malanga",
       peso: "500 gramos",
       precio: "2.000",
@@ -32,7 +38,7 @@ const ListarProductos = () => {
     },
     {
       to: "/harina-maiz",
-      imagenSrc: "img/Harina-de-maiz.jpg",
+      imagenSrc: maiz,
       nombre: "Harina de Maíz",
       peso: "500 gramos",
       precio: "1.500",
@@ -41,7 +47,7 @@ const ListarProductos = () => {
     },
     {
       to: "/harina-trigo",
-      imagenSrc: "img/trigo.jpg",
+      imagenSrc: trigo,
       nombre: "Harina de Trigo",
       peso: "500 gramos",
       precio: "2.500",
@@ -50,7 +56,7 @@ const ListarProductos = () => {
     },
     {
       to: "/harina-curcuma",
-      imagenSrc: "img/como_usar_la_curcuma_en_remedios_caseros_22450_orig.jpg",
+      imagenSrc: curcuma,
       nombre: "Harina de Cúrcuma",
       peso: "500 gramos",
       precio: "2.000",
@@ -59,7 +65,7 @@ const ListarProductos = () => {
     },
     {
       to: "/harina-platano",
-      imagenSrc: "img/HarinaDePlatano1.png",
+      imagenSrc: platano,
       nombre: "Harina de Plátano",
       peso: "500 gramos",
       precio: "1.000",
@@ -68,7 +74,7 @@ const ListarProductos = () => {
     },
     {
       to: "/harina-yuca",
-      imagenSrc: "img/yuca-flour-tapioca-cativia-CG11707.jpg",
+      imagenSrc: yuca,
       nombre: "Harina de Yuca",
       peso: "500 gramos",
       precio: "2.000",

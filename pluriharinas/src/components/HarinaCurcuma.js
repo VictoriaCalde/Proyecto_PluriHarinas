@@ -1,6 +1,6 @@
 import React from "react";
 import BotonCarrito from "./CarritoCompra";
-import "./Harinas.css";
+import "../components/styles/Harinas.css";
 import { Link } from "react-router-dom";
 
 const DetalleCurcuma = () => {

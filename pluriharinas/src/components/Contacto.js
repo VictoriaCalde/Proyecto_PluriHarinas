@@ -21,8 +21,12 @@ const Contacto = () => {
           <Link to="/Contacto">Contacto</Link>
         </li>
         <li>
-          <Link to="/Cliente">Cliente</Link>
+          <Link to="/registro">Registro</Link>
         </li>
+        <li>
+          <Link to="/InicioSesion">Iniciar Sesión</Link>
+        </li>
+        
         <li>
           <a href="#Carrito">Carrito</a>
         </li>

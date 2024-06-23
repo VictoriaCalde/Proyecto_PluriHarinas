@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./EmitirFactura.css";
+import "../components/styles/EmitirFactura.css";
 import axios from "axios";
 import { addDays, format } from "date-fns";
+import { Link } from "react-router-dom";
+
 
 const Factura = () => {
   const [productos, setProductos] = useState([]);
@@ -38,14 +40,13 @@ const Factura = () => {
 
   return (
     <div>
-      <ul>
+      <ul className="ulFactura">
         <li>
           <h1>Pluri Harinas</h1>
         </li>
         <li>Factura</li>
       </ul>
       <div className="factura">
-      
         <p>Fecha de emisión: {new Date().toLocaleDateString()}</p>
 
         <table>
@@ -81,6 +82,9 @@ const Factura = () => {
             </tr>
           </tbody>
         </table>
+        <button className="btnFacturaVolver">
+          <Link to="/ListarProductos">Volver</Link>
+        </button>
       </div>
     </div>
   );

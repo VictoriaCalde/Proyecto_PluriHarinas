@@ -1,0 +1,60 @@
+/* Estilos específicos para la sección Nosotros */
+.nosotros-section .nosotros-title {
+  text-align: center;
+  color: #333;
+}
+
+.nosotros-section ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4caf70;
+  display: flex;
+  justify-content: center;
+}
+
+.nosotros-section li {
+  float: left;
+  margin: auto;
+}
+
+.nosotros-section .nosotros-description {
+  margin: 10px auto;
+  padding: 10px;
+  max-width: 800px;
+  text-align: justify;
+  color: #666;
+}
+
+.nosotros-section .nosotros-images-title {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+.nosotros-section .nosotros-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.nosotros-section .image-container {
+  margin: 35px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nosotros-section img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nosotros-section img:hover {
+  transform: scale(1.1);
+}

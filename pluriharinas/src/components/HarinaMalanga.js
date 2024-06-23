@@ -1,5 +1,5 @@
 import React from "react";
-import "./Harinas.css";
+import "../components/styles/Harinas.css";
 import BotonCarrito from "./CarritoCompra";
 import { Link } from "react-router-dom";
 

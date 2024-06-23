@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MetodoPago.css";
+import "../components/styles/MetodoPago.css";
 
 const MetodoPago = () => {
   const [compraCancelada, setCompraCancelada] = useState(false);
@@ -26,20 +26,20 @@ const MetodoPago = () => {
       <form>
         <div className="contenedor">
           {["Sinpe", "Transferencia", "Efectivo", "Tarjeta"].map((metodo, index) => (
-            <button key={index} type="button" onClick={handleConfirmarPago}>
+            <button key={index} type="button" className="boton-pago" onClick={handleConfirmarPago}>
               {metodo}
             </button>
           ))}
           <a
             href="#popup1"
-            className="open-popup-btn"
+            className="boton-pago"
             onClick={handleCancelarCompra}
           >
             Cancelar
           </a>
           <div id="popup1" className={`popup ${compraCancelada ? "active" : ""}`}>
             <p>
-              Su compra ha sido {compraCancelada ? "cancelada" : "registrada"}
+              Su compra ha sido {compraCancelada ? "cancelada" : " "}
             </p>
             {compraCancelada && (
               <a href="ListarProductos" className="close-btn">
@@ -49,7 +49,7 @@ const MetodoPago = () => {
           </div>
           <div id="popupPago" className={`popup ${pagoConfirmado ? "active" : ""}`}>
             <p>
-              Su pago ha sido confirmado {pagoConfirmado ? "" : ""}
+              Su pago ha sido aceptado {pagoConfirmado ? "" : ""}
             </p>
             {pagoConfirmado && (
               <a href="ListarProductos" className="close-btn">
