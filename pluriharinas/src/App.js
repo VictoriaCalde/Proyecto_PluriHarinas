@@ -17,6 +17,8 @@ import CarritoCompra from "./components/CarritoCompra";
 import MenuExterno from "./components/menuExterno";
 import Registro from "./components/registro";
 import InicioSesion from "./components/InicioSesion";
+import CargarProducto from "./components/CargarProducto";
+import LoginAdmi from "./components/LoginAdmi";
 
 const App = () => {
   return (
@@ -37,6 +39,9 @@ const App = () => {
         <Route path="/CarritoCompra" element={<CarritoCompra />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/InicioSesion" element={<InicioSesion />} />
+        <Route path="/CargarProducto" element={<CargarProducto />} />
+        <Route path="/LoginAdmi" element={<LoginAdmi />} />
+        
       </Routes>
     </Router>
   );
