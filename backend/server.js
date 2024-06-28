@@ -2,6 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
+
 const multer = require("multer");
 const sql = require("mssql/msnodesqlv8");
 const sequelize = require("../pluriharinas/src/components/sequelize.js");
@@ -22,10 +23,8 @@ const config = {
     encrypt: false, // No usar encriptación
   },
 };
-
+const SECRET_KEY = 'tu_secreto_jwt';
 const pool = new sql.ConnectionPool(config);
-
-
 
 // Middleware
 app.use(cors()); // Habilitar CORS para todas las rutas
@@ -99,7 +98,6 @@ app.post("/loginAdministrador", async (req, res) => {
       if (result.recordset && result.recordset.length > 0) {
           const admin = result.recordset[0];
           console.log("Administrador encontrado:", admin);
-
           const token = jwt.sign({ userId: admin.id }, "tu_secreto_jwt", { expiresIn: "1h" });
           res.json({ success: true, message: "Inicio de sesión exitoso", token });
       } else {
@@ -117,7 +115,21 @@ app.post("/loginAdministrador", async (req, res) => {
   }
 });
 
+app.post('/verifyAdminToken', (req, res) => {
+  const { token } = req.body;
 
+  if (!token) {
+    return res.status(400).json({ valid: false, message: 'No token provided' });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ valid: false, message: 'Invalid token' });
+    }
+
+    res.json({ valid: true });
+  });
+});
 // Ruta para registrar usuarios
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -176,7 +188,83 @@ app.post("/Registro", async (req, res) => {
     await sql.close(); // Cerrar conexión a la base de datos
   }
 })
+// Servidor Node.js / Express
 
+app.post('/verifyUserToken', (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+      return res.status(400).json({ valid: false, message: 'Token no proporcionado' });
+  }
+
+  try {
+      jwt.verify(token, 'tu_secreto_para_jwt');
+      res.json({ valid: true });
+  } catch (error) {
+      console.error('Error al verificar el token del usuario:', error);
+      res.status(401).json({ valid: false, message: 'Token no válido' });
+  }
+});
+
+app.post("/Login", async (req, res) => {
+  try {
+      const { correo, contrasenna } = req.body;
+
+      if (!correo || !contrasenna) {
+          return res.status(400).json({ success: false, message: "Campos incompletos" });
+      }
+
+      await sql.connect(config);
+      const request = new sql.Request();
+      request.input("Correo", sql.VarChar(200), correo);
+      request.input("Contrasenna", sql.VarChar(60), contrasenna);
+
+      const result = await request.execute("IniciarSesion");
+
+      if (result.recordset && result.recordset.length > 0) {
+          const record = result.recordset[0];
+          if (record.Status === 'success') {
+              const isMatch = await bcrypt.compare(contrasenna, record.HashedPassword);
+              if (isMatch) {
+                  const token = jwt.sign({ userId: record.Id_cliente }, "tu_secreto_para_jwt", { expiresIn: "1h" });
+                  res.json({ success: true, message: "Inicio de sesión exitoso", token });
+              } else {
+                  res.json({ success: false, message: "Credenciales inválidas" });
+              }
+          } else {
+              res.json({ success: false, message: record.Message });
+          }
+      } else {
+          res.status(500).json({ success: false, message: "Error al iniciar sesión" });
+      }
+  } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      res.status(500).json({
+          success: false,
+          message: "Error en el servidor",
+          error: error.message,
+      });
+  } finally {
+      await sql.close();
+  }
+});
+
+/*
+app.post('/verifyUserToken', (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+      return res.status(400).json({ valid: false, message: 'Token no proporcionado' });
+  }
+
+  try {
+      jwt.verify(token, 'tu_secreto_jwt');
+      res.json({ valid: true });
+  } catch (error) {
+      console.error('Error al verificar el token del usuario:', error);
+      res.status(401).json({ valid: false, message: 'Token no válido' });
+  }
+});
 app.post("/Login", async (req, res) => {
   try {
     const { correo, contrasenna } = req.body;
@@ -218,7 +306,7 @@ app.post("/Login", async (req, res) => {
   } finally {
     await sql.close();
   }
-});
+});*/
 
 
 // Ruta para obtener productos
