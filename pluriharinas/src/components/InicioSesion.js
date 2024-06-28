@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../components/styles/InicioSesion.css";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const InicioSesion = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [credentials, setCredentials] = useState({
     inputEmail: "",
     inputPassword: "",
@@ -23,11 +28,13 @@ const InicioSesion = () => {
         contrasenna: credentials.inputPassword,
       });
 
-      setMensaje(
-        response.data.success
-          ? "Inicio de sesión exitoso"
-          : response.data.message
-      );
+      if (response.data.success) {
+        setMensaje("Inicio de sesión exitoso");
+        login();
+        navigate("/");
+      } else {
+        setMensaje(response.data.message);
+      }
     } catch (error) {
       setMensaje("Credenciales incorrectas");
     }

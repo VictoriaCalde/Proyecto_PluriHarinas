@@ -1,22 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../components/styles/Nosotros.css";
 import jenjibre from "../img/jenjibre-e1594343131877.jpg";
 import trigo from "../img/trigo.jpg";
 import malanga from "../img/malanga.jpg";
 
-const Nosotros = () => {
+const Nosotros = ({ isLoggedIn, logout }) => {
+  const [mostrarDropdown, setMostrarDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setMostrarDropdown(!mostrarDropdown);
+  };
+
   return (
     <div className="nosotros-section">
       <ul className="menu-externo-list">
-        {["Productos", "Nosotros", "Contacto", "Registro", "IniciarS"].map(
-          (item, index) => (
-            <li key={index} className="menu-externo-item">
-              <Link to={`/${item.toLowerCase()}`} className="menu-externo-link">
-                {item}
-              </Link>
+        <li className="menu-externo-item">
+          <Link to="/ListarProductos" className="menu-externo-link">Productos</Link>
+        </li>
+        <li className="menu-externo-item">
+          <Link to="/nosotros" className="menu-externo-link">Nosotros</Link>
+        </li>
+        <li className="menu-externo-item">
+          <Link to="/contacto" className="menu-externo-link">Contacto</Link>
+        </li>
+        {isLoggedIn ? (
+          <>
+            <li className="menu-externo-item">
+              <Link to="/CarritoCompra" className="menu-externo-link">Carrito de Compra</Link>
             </li>
-          )
+            <li className="menu-externo-item">
+              <span className="menu-externo-link" onClick={logout}>Cerrar Sesión</span>
+            </li>
+          </>
+        ) : (
+          <li className="menu-externo-item">
+            <span className="menu-externo-link" onClick={toggleDropdown}>Ingresar</span>
+            {mostrarDropdown && (
+              <ul className="dropdown-content">
+                <li><Link to="/registro" className="menu-externo-link">Registro</Link></li>
+                <li><Link to="/InicioSesion" className="menu-externo-link">Iniciar Sesión</Link></li>
+              </ul>
+            )}
+          </li>
         )}
       </ul>
       <h1 className="nosotros-title">Nosotros</h1>

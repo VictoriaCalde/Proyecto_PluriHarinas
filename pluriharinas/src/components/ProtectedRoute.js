@@ -1,36 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import axios from 'axios';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
-const ProtectedRoute = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+const ProtectedRoute = ({ children }) => {
+  const { isLoggedIn } = useAuth();
 
-  useEffect(() => {
-    const verifyToken = async () => {
-      const token = localStorage.getItem('adminToken');
-      if (!token) {
-        setIsAuthenticated(false);
-        return;
-      }
-
-      try {
-        const response = await axios.post('http://localhost:4000/verifyAdminToken', { token });
-        setIsAuthenticated(response.data.valid);
-      } catch (error) {
-        console.error('Error al verificar el token:', error);
-        setIsAuthenticated(false);
-      }
-    };
-
-    verifyToken();
-  }, []);
-
-  if (isAuthenticated === null) {
-    return <div>Cargando...</div>; // O un componente de carga
+  if (!isLoggedIn) {
+    return <Navigate to="/InicioSesion" />;
   }
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/loginadmi" />;
+  return children;
 };
 
 export default ProtectedRoute;
+
 

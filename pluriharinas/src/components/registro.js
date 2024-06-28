@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../components/styles/registro.css";
+import { useNavigate } from 'react-router-dom';  // Importa useNavigate desde react-router-dom
 
 const Registro = () => {
+  const navigate = useNavigate();  // Obtiene la función navigate para redireccionar
+
   const [formData, setFormData] = useState({
     nombre: "",
     contrasenna: "",
@@ -22,9 +25,12 @@ const Registro = () => {
     axios
       .post("http://localhost:4000/Registro", formData)
       .then((response) => {
-        setMensaje(
-          response.data.success ? "Registro exitoso" : response.data.message
-        );
+        if (response.data.success) {
+          setMensaje("Registro exitoso");
+          navigate('/InicioSesion');  // Redirige al usuario a InicioSesion.js
+        } else {
+          setMensaje(response.data.message);
+        }
       })
       .catch(() => {
         setMensaje("Ya existe un registro con este correo electrónico");

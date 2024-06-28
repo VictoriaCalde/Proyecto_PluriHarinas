@@ -53,3 +53,20 @@
 .menu-externo-container img:hover {
   transform: scale(1.1);
 }
+
+/* Estilos para el dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4caf70;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+}
+
+
+.menu-externo-item:hover .dropdown-content {
+  display: block;
+}
+

@@ -4,7 +4,6 @@ import axios from "axios";
 import { addDays, format } from "date-fns";
 import { Link } from "react-router-dom";
 
-
 const Factura = () => {
   const [productos, setProductos] = useState([]);
 
@@ -12,6 +11,7 @@ const Factura = () => {
     obtenerProductos();
   }, []);
 
+  // Función para obtener los productos desde la API
   const obtenerProductos = async () => {
     try {
       const response = await axios.get(
@@ -27,10 +27,12 @@ const Factura = () => {
     }
   };
 
+  // Función para calcular el total por cada producto
   const calcularTotalProducto = (producto) => {
     return producto.Cantidad * producto.Precio;
   };
 
+  // Función para calcular el total general de la factura
   const calcularTotalGeneral = () => {
     return productos.reduce(
       (total, producto) => total + calcularTotalProducto(producto),
